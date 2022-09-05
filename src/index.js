@@ -10,9 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-app.get('/', (req, res) => {
-  res.send({ msg: 'Hello word' });
-});
+app.use(require('./routes'));
 
 // Server
 app.listen(PORT, () => {
