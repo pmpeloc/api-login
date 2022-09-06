@@ -14,7 +14,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(require('./routes'));
 
 // Server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  // WARNING: Solo activar el force true cuando se crean nuevos modelos.
+  await sequelize.sync({ force: true });
   sequelize.authenticate().then(() => {
     console.log('Database is connect successfully');
   });
